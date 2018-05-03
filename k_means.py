@@ -1,6 +1,12 @@
 # coding=utf-8
 '''K-means算法的实现
-样本数据集采用datesaet16.mat中的svmguide1'''
+K-means 算法思想：
+1.初始化聚类个数及中心点。人为给定。
+2.划分数据到每个类。计算样本数据到各聚类中心的距离（欧式距离或其他距离等），把每个样本划分到最近的类中。
+3.重新计算类中心点。一般是求坐标平均值。
+4.重复2、3步骤。直到聚类中心不再移动位置。'''
+
+
 import numpy as np
 import time
 import matplotlib.pyplot as plt
@@ -32,7 +38,7 @@ def k_means(data_set, k):
     clus_assiment = np.zeros((data_num, 1))
     clus_adjusted = True
     # 初始化聚类
-    centroids = init_centroids(data_set, k) 
+    centroids = init_centroids(data_set, k)
     while clus_adjusted:
         clus_adjusted = False
         # 对于每个样本
